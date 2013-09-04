@@ -1,6 +1,6 @@
 ## The Sense Platform's JavaScript engine
 
-This module is an example implementation of the [Engine API](help.senseplatform.com/api/engines). It allows users to run JavaScript dashboards on the Sense Platform. It is preinstalled on Sense.
+This module is an example implementation of the [Engine API](http://help.senseplatform.com/api/engines). It allows users to run JavaScript dashboards on the Sense Platform. It is preinstalled on Sense.
 
 Note that this module evaluates code chunks in a subprocess. This keeps the main process's event loop relatively free, allowing it to receive interrupt events and emit output while code chunks are running. The code chunker is based on the [acorn](http://github.com/marijnh/acorn) parser.
 
