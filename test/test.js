@@ -44,6 +44,26 @@ describe('io', function() {
     assertOutputTypes("a", ["text/javascript", "text/plain"], done);
   });
 
+  it('should not output assigned modules', function(done) {
+    assertOutputTypes("sense = require('sense')", ["text/javascript"], done);
+  });
+
+  it('should not output assigned widgets', function(done) {
+    assertOutputTypes("w = sense.widget('text/html', '<b>hi</b>')", ["text/javascript"], done);
+  });
+
+  it('should output widgets dropped at the repl according to their types', function(done) {
+    assertOutputTypes("w", ["text/javascript", "text/html"], done)
+  });
+
+  it('should not output displayed widgets according to their types', function(done) {
+    assertOutputTypes("sense.display(w)", ["text/javascript", "text/html"], done);
+  });
+
+  it('display non-widgets as plain text', function(done) {
+    assertOutputTypes("sense.display('nothing')", ["text/javascript", "text/plain"], done);
+  });
+
   it('should output code before runtime errors', function(done) {
     assertOutputTypes("b", ["text/javascript", "application/error"], done);
   });
