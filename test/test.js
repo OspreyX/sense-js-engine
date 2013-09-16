@@ -1,6 +1,6 @@
 // run with mocha -u bdd
 
-var senseDashboard = require('sense-dashboard');
+var senseEngine = require('sense-engine');
 var assert = require('chai').assert
 
 describe('io', function() {
@@ -8,7 +8,7 @@ describe('io', function() {
   // using Mocha's done() function.
   var tester;
   it('creating dashboard', function(done) {
-    senseDashboard.test(require('../lib/index').createDashboard, function(tester_) {
+    senseEngine.test(require('../lib/index').createDashboard, function(tester_) {
       tester = tester_;
       done()
     });
@@ -25,7 +25,7 @@ describe('io', function() {
       }
       for (var i = 0; i < types.length; i++) {
         try {
-          assert.equal(output[i].type, types[i]);
+          assert.equal(output[i].mime, types[i]);
         }
         catch (e) {
           done(e);
@@ -37,59 +37,39 @@ describe('io', function() {
   };
 
   it('should not output assignment results', function(done) {
-    assertOutputTypes("a=0", ["code"], done);
-  });
-
-  it('should not output assigned widgets', function(done) {
-    assertOutputTypes("x={toWidget: (function() {return 0;})}", ["code"], done);
-  });
-
-  it('should not output assigned html', function(done) {
-    assertOutputTypes("y={toHtml: (function() {return 0;})}", ["code"], done);
-  });
-
-  it('should prefer widget to html and text', function(done) {
-    assertOutputTypes("({toHtml: (function() {return 0;}), toWidget: (function() {return 0;})})", ["code", "widget"], done);
+    assertOutputTypes("a=0", ["text/javascript"], done);
   });
 
   it('should output other results', function(done) {
-    assertOutputTypes("a", ["code", "text"], done);
+    assertOutputTypes("a", ["text/javascript", "text/plain"], done);
   });
 
   it('should output code before runtime errors', function(done) {
-    assertOutputTypes("b", ["code", "error"], done);
+    assertOutputTypes("b", ["text/javascript", "application/error"], done);
   });
 
   it('should output short syntax errors with no code', function(done) {
-    assertOutputTypes("(", ["error"], done);
+    assertOutputTypes("(", ["application/error"], done);
   });
 
   it('should render block comments', function(done) {
-    assertOutputTypes("/*\nSome documentation.\n*/", ["html"], done);
+    assertOutputTypes("/*\nSome documentation.\n*/", ["text/markdown"], done);
   });
 
   it('should not render line comments', function(done) {
-    assertOutputTypes("//line1\n//line2\n\n//line3", ["comment", "comment"], done);
+    assertOutputTypes("//line1\n//line2\n\n//line3", ["text/comment", "text/comment"], done);
   });
 
   it('should group multiline statements', function(done) {
-    assertOutputTypes("(function(x) {\n  return x*x;\n})(2);", ["code", "text"], done);
+    assertOutputTypes("(function(x) {\n  return x*x;\n})(2);", ["text/javascript", "text/plain"], done);
   });
 
   it('schould recognize unparenthesized object literals', function(done) {
-    assertOutputTypes("{x: 0};", ["code", "text"], done);
+    assertOutputTypes("{x: 0};", ["text/javascript", "text/plain"], done);
   });
 
   it('should tolerate blank lines', function(done) {
-    assertOutputTypes("a\n\nb", ["code", "text", "code", "error"], done);
-  });
-
-  it('should produce html output', function(done) {
-    assertOutputTypes("({toHtml: function() {return 'a';}})", ["code", "html"], done);
-  });
-
-  it('should produce widget output', function(done) {
-    assertOutputTypes("({toWidget: function() {return 'a';}})", ["code", "widget"], done);
+    assertOutputTypes("a\n\nb", ["text/javascript", "text/plain", "text/javascript", "application/error"], done);
   });
 
   it('should preserve result ordering', function (done) {
@@ -100,7 +80,7 @@ describe('io', function() {
     }
     var types = [];
     for (i = 0; i < n; i++) {
-      types.push("code", "text");
+      types.push("text/javascript", "text/plain");
     }
     assertOutputTypes(code.join("\n"), types, done);
   });
@@ -113,7 +93,7 @@ describe('io', function() {
     }
     var types = [];
     for (i = 0; i < n; i++) {
-      types.push("code", "error");
+      types.push("text/javascript", "application/error");
     }
     assertOutputTypes(code.join("\n"), types, done);
   });
@@ -126,7 +106,7 @@ describe('io', function() {
     }
     var types = [];
     for (i = 0; i < n; i++) {
-      types.push("code", "text");
+      types.push("text/javascript", "text/plain");
     }
     assertOutputTypes(code.join("\n"), types, done);
   });
