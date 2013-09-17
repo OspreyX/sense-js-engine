@@ -7,7 +7,7 @@ describe('io', function() {
   // This first test is a way to define 'tester' synchronously
   // using Mocha's done() function.
   var tester;
-  it('creating dashboard', function(done) {
+  it('creating engine', function(done) {
     engine.test(function(tester_) {
       tester = tester_;
       done();
