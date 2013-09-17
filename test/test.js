@@ -1,7 +1,7 @@
-// run with mocha -u bdd
+// run with mocha -u bdd or grunt test
 
 var engine = require('../lib').createEngine();
-var assert = require('chai').assert
+var assert = require('chai').assert;
 
 describe('io', function() {
   // This first test is a way to define 'tester' synchronously
@@ -10,18 +10,18 @@ describe('io', function() {
   it('creating dashboard', function(done) {
     engine.test(function(tester_) {
       tester = tester_;
-      done()
+      done();
     });
   });
 
   var assertOutputTypes = function(input, types, done) {
     tester(input, function (output) {
       try {
-        assert.equal(output.length, types.length)
-      }
+        assert.equal(output.length, types.length);
+      } 
       catch (e) {
-        done(e)
-        return                
+        done(e);
+        return;              
       }
       for (var i = 0; i < types.length; i++) {
         try {
