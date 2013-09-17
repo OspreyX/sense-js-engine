@@ -1,6 +1,6 @@
 // run with mocha -u bdd
 
-var senseDashboard = require('sense-dashboard');
+var engine = require('../lib').createEngine();
 var assert = require('chai').assert
 
 describe('io', function() {
@@ -8,7 +8,7 @@ describe('io', function() {
   // using Mocha's done() function.
   var tester;
   it('creating dashboard', function(done) {
-    senseDashboard.test(require('../lib/index').createDashboard, function(tester_) {
+    engine.test(function(tester_) {
       tester = tester_;
       done()
     });
@@ -48,8 +48,8 @@ describe('io', function() {
     assertOutputTypes("y={toHtml: (function() {return 0;})}", ["code"], done);
   });
 
-  it('should prefer widget to html and text', function(done) {
-    assertOutputTypes("({toHtml: (function() {return 0;}), toWidget: (function() {return 0;})})", ["code", "widget"], done);
+  it('should prefer html to text', function(done) {
+    assertOutputTypes("({toHtml: (function() {return 0;})})", ["code", "html"], done);
   });
 
   it('should output other results', function(done) {
@@ -88,10 +88,6 @@ describe('io', function() {
     assertOutputTypes("({toHtml: function() {return 'a';}})", ["code", "html"], done);
   });
 
-  it('should produce widget output', function(done) {
-    assertOutputTypes("({toWidget: function() {return 'a';}})", ["code", "widget"], done);
-  });
-
   it('should preserve result ordering', function (done) {
     var n = 1000;
     var code = [];
@@ -105,17 +101,13 @@ describe('io', function() {
     assertOutputTypes(code.join("\n"), types, done);
   });
 
-  it('should preserve error ordering', function (done) {
+  it('should clear the command queue on first error', function (done) {
     var n = 1000;
     var code = [];
     for (var i = 0; i < n; i++) {
       code.push("q");
     }
-    var types = [];
-    for (i = 0; i < n; i++) {
-      types.push("code", "error");
-    }
-    assertOutputTypes(code.join("\n"), types, done);
+    assertOutputTypes(code.join("\n"), ["code", "error"], done);
   });
 
   it('should preserve stdout ordering', function (done) {
