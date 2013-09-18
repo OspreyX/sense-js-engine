@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/SensePlatform/sense-js-engine.png)](https://travis-ci.org/SensePlatform/sense-js-engine)
 
-This module implements Javascript (NodeJS) engine for [Sense](https://senseplatform.com) using Sense's 
+This module implements a JavaScript (NodeJS) engine for [Sense](https://senseplatform.com) using Sense's 
 [Engine API](https://github.com/SensePlatform/sense-engine). It allows users to run JavaScript dashboards
 on Sense. It is preinstalled.
 
@@ -12,15 +12,17 @@ This module provides a complete example of how to implement an engine on Sense.
 
 This module evaluates code chunks in a subprocess. This keeps the main process's event loop 
 relatively free, allowing it to receive interrupt events and emit output while code chunks are running.
-The code chunker is based on the [acorn](http://github.com/marijnh/acorn) parser.
 
-You can install this engine locally using:
+Its code chunker, a function that splits long strings of code into logical units such as statements and block 
+comments, is based on the [acorn](http://github.com/marijnh/acorn) parser.
+
+You can install this engine locally using
 
 ```
 npm install sense-js-engine
 ```
 
-You can test it from the command line using,
+You can test it from the command line using
 
 ```
 grunt test
