@@ -21,15 +21,13 @@ You can test it from the command line using
 grunt test
 ```
 
-If you install the module in your projects `/home/sense`, it will
-override the default JavaScript engine and can be used from with
-Sense. You can also install it in a subfolder and use `npm link` to
-link it to your projects main node_modules folder.
+If you install this package in your project's `/home/sense`, it will
+override the default JavaScript engine and can be used from Sense.
 
 ## Implementation overview
 
-This module provides a complete example of how to implement an engine
-for Sense.
+This module provides a complete example of how to implement an 
+[engine](https://github.com/SensePlatform/sense-engine) for Sense.
 
 The engine evaluates code chunks in a subprocess, keeping the main
 process's event loop relatively free. This allows the engine to
