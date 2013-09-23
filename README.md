@@ -39,17 +39,22 @@ running.
 Each engine must define the `chunk` method, providing a 'chunker': a
 function that splits long strings of code into logical units such as
 statements and block  comments. This engine's chunker uses the
-[acorn](https://github.com/marijnh/acorn) parser with the  [comment-
-chunk-helper](https://github.com/SensePlatform/comment-chunk-helper)
+[acorn](https://github.com/marijnh/acorn) parser with the 
+[comment-chunk-helper](https://github.com/SensePlatform/comment-chunk-helper)
 package.
 
 While evaluating code chunks, the subprocess generates output, which
-it sends to the engine according to its type using [`process.send`](ht
-tp://nodejs.org/api/child_process.html#child_process_child_send_messag
-e_sendhandle). When the subprocess has finished evaluating a code
+it sends to the engine according to its type using [`process.send`](h
+ttp://nodejs.org/api/child_process.html#child_process_child_send_messa
+ge_sendhandle). When the subprocess  has finished evaluating a code
 chunk, it sends an output message of type 'result', indicating that it
 is ready for the next code chunk.
 
 The engine itself communicates with the frontend using the methods
-defined in the [engine API](https://github.com/SensePlatform/sense-
-engine).
+defined in the [engine API](https://github.com/SensePlatform/sense-engine).
+
+## Support
+
+* Email: support@senseplatform.com
+* Google Group: https://groups.google.com/forum/?fromgroups#!forum/sense-users
+* IRC: `#senseplatform` on `irc.freenode.net`
