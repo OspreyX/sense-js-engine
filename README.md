@@ -7,7 +7,7 @@ This module implements a JavaScript (NodeJS) engine for
 [Engine API](https://github.com/SensePlatform/sense-engine). 
 It is preinstalled on Sense.
 
-![Sense JavaScript Engine](https://s3.amazonaws.com/sense-files/rjsscreenshot.png)
+![Sense JavaScript Engine](https://s3.amazonaws.com/sense-files/jsscreenshot.png)
 
 ## Installation and Usage
 
