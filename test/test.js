@@ -40,16 +40,12 @@ describe('io', function() {
     assertOutputTypes("a=0", ["code"], done);
   });
 
-  it('should not output assigned widgets', function(done) {
-    assertOutputTypes("x={toWidget: (function() {return 0;})}", ["code"], done);
-  });
-
-  it('should not output assigned html', function(done) {
-    assertOutputTypes("y={toHtml: (function() {return 0;})}", ["code"], done);
+  it('should not output assigned iframes', function(done) {
+    assertOutputTypes("y={toIFrame: (function() {return {src: 'hello'};})}", ["code"], done);
   });
 
   it('should prefer html to text', function(done) {
-    assertOutputTypes("({toHtml: (function() {return 0;})})", ["code", "html"], done);
+    assertOutputTypes("({toIFrame: (function() {return {src: 'hello'};})})", ["code", "iframe"], done);
   });
 
   it('should output other results', function(done) {
@@ -65,7 +61,7 @@ describe('io', function() {
   });
 
   it('should render block comments', function(done) {
-    assertOutputTypes("/*\nSome documentation.\n*/", ["html"], done);
+    assertOutputTypes("/*\nSome documentation.\n*/", ["markdown"], done);
   });
 
   it('should not render line comments', function(done) {
@@ -85,7 +81,7 @@ describe('io', function() {
   });
 
   it('should produce html output', function(done) {
-    assertOutputTypes("({toHtml: function() {return 'a';}})", ["code", "html"], done);
+    assertOutputTypes("({toIFrame: function() {return {src: 'hello'};}})", ["code", "iframe"], done);
   });
 
   it('should preserve result ordering', function (done) {
