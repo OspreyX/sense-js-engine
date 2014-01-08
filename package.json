@@ -1,7 +1,7 @@
 {
   "name": "sense-js-engine",
   "description": "JavaScript Engine for Sense.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "./lib",
   "license": "MIT",
   "author": "Sense, Inc.",
@@ -16,7 +16,8 @@
     "acorn": "~0.3.1",
     "comment-chunk-helper": "~0.0.1",
     "sense-engine": "~0.3.0",
-    "lodash": "~2.0.0"
+    "lodash": "~2.0.0",
+    "sense": "~0.3.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
