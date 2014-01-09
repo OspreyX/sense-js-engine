@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/SensePlatform/sense-js-engine.png)](https://travis-ci.org/SensePlatform/sense-js-engine)
 
-This module implements a JavaScript (NodeJS) engine for 
+This module implements a JavaScript (Node.js) engine for 
 [Sense](https://senseplatform.com) using Sense's 
 [Engine API](https://github.com/SensePlatform/sense-engine). 
 It is preinstalled on Sense.
