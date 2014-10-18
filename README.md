@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/SensePlatform/sense-js-engine.png)](https://travis-ci.org/SensePlatform/sense-js-engine)
 
 This module implements a JavaScript (Node.js) engine for 
-[Sense](https://senseplatform.com) using Sense's 
+[Sense](https://sense.io) using Sense's 
 [Engine API](https://github.com/SensePlatform/sense-engine). 
 It is preinstalled on Sense.
 
@@ -54,7 +54,7 @@ defined in the [Engine API](https://github.com/SensePlatform/sense-engine).
 
 ## Support
 
-* Email: support@senseplatform.com
+* Email: support@sense.io
 * Twitter: https://twitter.com/SensePlatform
 * Google Group: https://groups.google.com/forum/?fromgroups#!forum/sense-users
 * IRC: `#senseplatform` on `irc.freenode.net`
