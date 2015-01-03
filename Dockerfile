@@ -1,9 +1,10 @@
-FROM senseplatform/engine-low:a7032b18c5f491f6e7c4619d727ef1bd37205bf8
+FROM senseplatform/engine-low:6936063a8424b7f14662e12b4b195393671efae4
 
 WORKDIR /sense
 ADD . /sense
 
 RUN ln -s /usr/lib/node_modules /node_modules
+ENV SENSE_ENGINE_MODULE=sense-js-engine
 
 # JS
 RUN npm install -g sense-js-module
