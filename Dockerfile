@@ -14,3 +14,7 @@ RUN npm install -g sense-js-engine
 RUN rm -rf /sense
 
 CMD startup
+
+# Install Ubuntu security updates.
+RUN grep security /etc/apt/sources.list > /tmp/security.list
+RUN sudo apt-get upgrade -oDir::Etc::Sourcelist=/tmp/security.list -s
