@@ -1,0 +1,17 @@
+{
+  "name": "sense",
+  "description": "Basic functions to help you get the most of JavaScript dashboards on the Sense Platform.",
+  "version": "0.3.0",
+  "main": "./lib/index.js",
+  "url": "http://www.senseplatform.com/",
+  "repository": "https://github.com/SensePlatform/sense-js-module",
+  "author": "Sense Inc.",
+  "copyright": "Sense Inc.",
+  "license": "MIT",
+  "dependencies": {
+    "shelljs": "~0.2.1",
+    "request": "~2.27.0",
+    "async": "~0.2.9",
+    "underscore": "~1.5.2"
+  }
+}
