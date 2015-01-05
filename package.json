@@ -7,7 +7,8 @@
   "author": "Sense, Inc.",
   "repository": "https://github.com/SensePlatform/sense-js-engine",
   "bin": {
-    "sense-js-engine": "./bin/sense-js-engine"
+    "sense-js-engine": "./bin/sense-js-engine",
+    "manifest": "./bin/manifest"
   },
   "scripts": {
     "test": "grunt test"
