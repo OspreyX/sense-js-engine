@@ -7,7 +7,7 @@ RUN ln -s /usr/lib/node_modules /node_modules
 ENV SENSE_ENGINE_MODULE=sense-js-engine
 
 # JS
-RUN npm install -g sense-js-engine/sense-js-module
+RUN cd /;npm install /sense/sense-js-engine/sense-js-module
 RUN npm install -g sense-js-engine
 
 # Nuke build artifacts
