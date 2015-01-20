@@ -1,4 +1,4 @@
-FROM senseplatform/engine-low:ef49b08caa17ed8494634b3a8740cd0e7d77d3cf
+FROM senseplatform/engine-low:56aa871f4f6eaee01ded496b10526aaaac5c4f3e
 
 WORKDIR /sense
 ADD . /sense/sense-js-engine
