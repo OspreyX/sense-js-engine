@@ -311,9 +311,8 @@ The parameters should be an object with the following keys:
 
 * **n**: The number of workers to launch.
 * **size** (optional): The size of the workers, from 0 to 16.
-* **engine** (optional): The name of the [npm](http://npmjs.org) module to use
-  as the engine. Defaults to "sense-js-engine", but workers can run other
-  engines too.
+* **engine** (optional): The name of the engine to use. Defaults to 
+  "nodejs", but workers can run other engines too.
 * **script** (optional): A script file that the worker should
   execute on launch. The path is relative to the project's home folder.
 * **code** (optional): Code that the worker should execute on 
