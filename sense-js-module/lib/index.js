@@ -210,7 +210,7 @@ var getBaseUrl = function() {
 exports.launchWorkers = function(params, cb) {
   var requestBody, url, size, engine, script, code, n, env, cb_;
   n = params.n || 1;
-  engine = params.engine || "sense-js-engine";
+  engine = params.engine || "nodejs";
   script = params.script || "";
   code = params.code || "";
   env = params.env || {};
