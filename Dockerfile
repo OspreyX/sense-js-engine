@@ -1,18 +1,9 @@
-FROM senseplatform/engine-low:56aa871f4f6eaee01ded496b10526aaaac5c4f3e
+FROM senseplatform/nodejs:0.10.32-1
 
 WORKDIR /sense
-ADD . /sense/sense-js-engine
-
-ENV SENSE_ENGINE_MODULE=sense-js-engine
-
-# JS
-RUN cd /; npm install /sense/sense-js-engine/sense-js-module
-RUN npm install -g sense-js-engine
-
-# Nuke build artifacts
+ADD cloud-dashboard-handler /sense/cloud-dashboard-handler
+RUN npm install -g /sense/cloud-dashboard-handler
 RUN rm -rf /sense
-
-CMD startup
 
 # Install Ubuntu security updates.
 RUN grep security /etc/apt/sources.list > /tmp/security.list
