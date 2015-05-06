@@ -1,0 +1,3 @@
+[submodule "cloud-dashboard-handler"]
+	path = cloud-dashboard-handler
+	url = git@github.com:SensePlatform/cloud-dashboard-handler
